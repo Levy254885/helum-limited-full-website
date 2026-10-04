@@ -25,7 +25,6 @@ export default function ContactForm() {
       setErrorMsg("Please enter a valid email address.");
       return;
     }
-    // Wire to API later: await fetch("/api/enquiry", { method: "POST", body: JSON.stringify(...) })
     await new Promise((r) => setTimeout(r, 700));
     e.currentTarget.reset();
     setStatus("success");
@@ -68,10 +67,12 @@ export default function ContactForm() {
         </label>
         <select id="solution" name="solution" className={input}>
           <option value="">Select an option</option>
-          <option value="renewable">Renewable Energy Solutions</option>
-          <option value="energy-tech">Energy & Power Technology</option>
-          <option value="productive">Productive-Use Technology</option>
-          <option value="partnership">Strategic Technology Partnership</option>
+          <option value="solar-pv">Solar PV Solutions</option>
+          <option value="energy-storage">Energy Storage</option>
+          <option value="power-electronics">Power Electronics</option>
+          <option value="engineering">Engineering & Technical Services</option>
+          <option value="distribution">Distribution / Dealer</option>
+          <option value="after-sales">After-Sales Support</option>
           <option value="general">General Enquiry</option>
         </select>
       </div>
@@ -79,7 +80,14 @@ export default function ContactForm() {
         <label htmlFor="message" className="mb-2 block text-sm font-semibold text-[#1a1f2e]">
           Message *
         </label>
-        <textarea id="message" name="message" rows={4} required placeholder="Tell us about your energy or technology needs..." className={input} />
+        <textarea
+          id="message"
+          name="message"
+          rows={4}
+          required
+          placeholder="Tell us about your energy needs..."
+          className={input}
+        />
       </div>
       <motion.button
         type="submit"
@@ -88,7 +96,7 @@ export default function ContactForm() {
         whileTap={{ scale: 0.98 }}
         className="w-full rounded-full bg-[#e8a317] px-6 py-3.5 text-base font-semibold text-[#0b1220] transition hover:bg-[#d4920f] disabled:opacity-70"
       >
-        {status === "loading" ? "Sending\u2026" : "Send Enquiry"}
+        {status === "loading" ? "Sending…" : "Send Enquiry"}
       </motion.button>
 
       <AnimatePresence>
