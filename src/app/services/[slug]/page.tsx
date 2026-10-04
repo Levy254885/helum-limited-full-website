@@ -1,18 +1,10 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import PageHero from "@/components/PageHero";
 import { PageTransition, Reveal, Stagger, StaggerItem } from "@/components/Motion";
 import { services } from "@/lib/content";
-import { images } from "@/lib/images";
-
-const imgMap: Record<string, { src: string; alt: string }> = {
-  "renewable-energy": images.renewable,
-  "energy-power-technology": images.energyTech,
-  "productive-use": images.productive,
-  "strategic-partnerships": images.partnerships,
-};
+import { images, serviceImages } from "@/lib/images";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -31,7 +23,7 @@ export default async function ServiceDetailPage({ params }: Props) {
   const { slug } = await params;
   const service = services.find((s) => s.slug === slug);
   if (!service) notFound();
-  const img = imgMap[slug];
+  const img = serviceImages[slug] ?? images.renewable;
 
   return (
     <PageTransition>

@@ -9,19 +9,19 @@ const inter = Inter({ subsets: ["latin"], display: "swap", variable: "--font-int
 export const metadata: Metadata = {
   metadataBase: new URL("https://helumlimited.com"),
   title: {
-    default: "HELUM LIMITED | Technology, Energy & Renewable Energy Solutions",
+    default: "HELUM LIMITED | Powering Progress Through Clean Energy",
     template: "%s | HELUM LIMITED",
   },
   description:
-    "Helum Limited delivers practical technology and renewable energy solutions designed to improve energy access, reliability, productivity and business efficiency across Africa.",
+    "Helum Limited delivers reliable, affordable and scalable renewable-energy solutions—solar PV, energy storage, power electronics, engineering and after-sales support across Kenya and East Africa.",
   openGraph: {
     type: "website",
     locale: "en_KE",
     url: "https://helumlimited.com",
     siteName: "Helum Limited",
-    title: "HELUM LIMITED | Technology, Energy & Renewable Energy Solutions",
+    title: "HELUM LIMITED | Powering Progress Through Clean Energy",
     description:
-      "Practical technology and renewable energy solutions for Africa. Engineering the Intelligence of Energy.",
+      "Integrated renewable-energy solutions for homes, businesses, institutions and agriculture. Solar | Storage | Power Solutions | Engineering | Distribution.",
     images: [
       {
         url: "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=1200",
@@ -33,8 +33,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "HELUM LIMITED | Technology, Energy & Renewable Energy Solutions",
-    description: "Practical technology and renewable energy solutions for Africa.",
+    title: "HELUM LIMITED | Powering Progress Through Clean Energy",
+    description: "Reliable, affordable and scalable clean-energy solutions across Kenya and East Africa.",
   },
   robots: { index: true, follow: true },
   alternates: { canonical: "https://helumlimited.com" },
@@ -46,7 +46,7 @@ const jsonLd = {
   name: "Helum Limited",
   url: "https://helumlimited.com",
   description:
-    "Kenyan technology and renewable-energy company focused on developing, sourcing and delivering innovative solutions that address real-world energy and productivity challenges.",
+    "Renewable-energy and clean-technology company delivering reliable, affordable and scalable energy solutions across Kenya and the wider East African market.",
   address: {
     "@type": "PostalAddress",
     streetAddress: "Darosa Plaza, Karen Road",
