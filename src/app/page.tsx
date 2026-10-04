@@ -4,8 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { useRef } from "react";
-import { images } from "@/lib/images";
-import { about, company, services, values, vision, mission, whyHelum, investment } from "@/lib/content";
+import { images, serviceImages } from "@/lib/images";
+import { about, company, services, values, vision, mission, whyHelum, investment, promise } from "@/lib/content";
 import { Reveal, Stagger, StaggerItem } from "@/components/Motion";
 import { heroItem, heroTitle, staggerContainer } from "@/lib/motion";
 
@@ -38,11 +38,13 @@ export default function HomePage() {
             </span>
           </motion.div>
           <motion.h1 variants={reduce ? undefined : heroTitle} className="mb-5 text-4xl font-extrabold leading-[1.08] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-[4.5rem]">
-            Engineering the<br /><span className="hero-highlight">Intelligence of Energy</span>
+            Powering Progress<br /><span className="hero-highlight">Through Clean Energy</span>
           </motion.h1>
-          <motion.p variants={reduce ? undefined : heroItem} className="mb-3 text-lg font-medium text-white/95 sm:text-xl">Technology and Energy Solutions Built for Africa</motion.p>
+          <motion.p variants={reduce ? undefined : heroItem} className="mb-3 text-lg font-medium text-white/95 sm:text-xl">
+            Solar Energy · Energy Storage · Power Solutions · Engineering · Distribution
+          </motion.p>
           <motion.p variants={reduce ? undefined : heroItem} className="mx-auto mb-10 max-w-[600px] text-base leading-relaxed text-white/75">
-            Helum connects innovative technology, reliable energy and productive solutions to help businesses, households, institutions and enterprises overcome real-world energy challenges.
+            Reliable, affordable and scalable renewable-energy solutions for households, businesses, institutions and agricultural enterprises across Kenya and East Africa.
           </motion.p>
           <motion.div variants={reduce ? undefined : heroItem} className="flex flex-wrap justify-center gap-4">
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
@@ -59,7 +61,7 @@ export default function HomePage() {
         <div className="mx-auto grid max-w-[1200px] items-center gap-12 px-5 sm:px-6 lg:grid-cols-2">
           <Reveal>
             <p className="mb-3 text-sm font-semibold uppercase tracking-wider text-[#e8a317]">About Helum</p>
-            <h2 className="mb-6 text-3xl font-extrabold tracking-tight text-[#1a1f2e] sm:text-4xl">Technology. Energy. Possibility.</h2>
+            <h2 className="mb-6 text-3xl font-extrabold tracking-tight text-[#1a1f2e] sm:text-4xl">An Integrated Energy Solutions Provider</h2>
             <p className="mb-4 text-lg font-medium leading-relaxed text-[#1a1f2e]">{about.lead}</p>
             <p className="mb-4 text-[#5a6478] leading-relaxed">{about.belief}</p>
             <p className="mb-8 text-[#5a6478] leading-relaxed">{about.beyond}</p>
@@ -91,33 +93,30 @@ export default function HomePage() {
           <div className="mb-14 text-center">
             <Reveal>
               <p className="mb-3 text-sm font-semibold uppercase tracking-wider text-[#e8a317]">What We Do</p>
-              <h2 className="mb-4 text-3xl font-extrabold tracking-tight text-[#1a1f2e] sm:text-4xl">Integrated Technology & Energy Solutions</h2>
+              <h2 className="mb-4 text-3xl font-extrabold tracking-tight text-[#1a1f2e] sm:text-4xl">Across the Renewable-Energy Value Chain</h2>
             </Reveal>
           </div>
-          <Stagger className="grid gap-6 md:grid-cols-2">
-            {services.map((s) => (
-              <StaggerItem key={s.slug}>
-                <Link href={`/services/${s.slug}`} className="group block h-full">
-                  <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-[#e5e8ef] bg-white transition duration-300 hover:-translate-y-1.5 hover:shadow-xl">
-                    <div className="relative aspect-[16/9] overflow-hidden">
-                      <Image
-                        src={s.slug === "renewable-energy" ? images.renewable.src : s.slug === "energy-power-technology" ? images.energyTech.src : s.slug === "productive-use" ? images.productive.src : images.partnerships.src}
-                        alt={s.title}
-                        fill
-                        className="object-cover transition duration-700 group-hover:scale-105"
-                        sizes="(max-width:768px) 100vw, 50vw"
-                      />
-                      <span className="absolute left-4 top-4 rounded-md bg-[#e8a317] px-2.5 py-1 text-sm font-bold text-[#0b1220]">{s.num}</span>
-                    </div>
-                    <div className="flex flex-1 flex-col p-6">
-                      <h3 className="mb-2 text-xl font-bold text-[#1a1f2e] group-hover:text-[#e8a317] transition">{s.title}</h3>
-                      <p className="mb-4 flex-1 text-sm leading-relaxed text-[#5a6478]">{s.short}</p>
-                      <span className="inline-flex items-center gap-2 text-sm font-semibold text-[#1a1f2e] transition group-hover:gap-3 group-hover:text-[#e8a317]">Explore <span aria-hidden>→</span></span>
-                    </div>
-                  </article>
-                </Link>
-              </StaggerItem>
-            ))}
+          <Stagger className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {services.map((s) => {
+              const img = serviceImages[s.slug] ?? images.renewable;
+              return (
+                <StaggerItem key={s.slug}>
+                  <Link href={`/services/${s.slug}`} className="group block h-full">
+                    <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-[#e5e8ef] bg-white transition duration-300 hover:-translate-y-1.5 hover:shadow-xl">
+                      <div className="relative aspect-[16/9] overflow-hidden">
+                        <Image src={img.src} alt={s.title} fill className="object-cover transition duration-700 group-hover:scale-105" sizes="(max-width:768px) 100vw, 33vw" />
+                        <span className="absolute left-4 top-4 rounded-md bg-[#e8a317] px-2.5 py-1 text-sm font-bold text-[#0b1220]">{s.num}</span>
+                      </div>
+                      <div className="flex flex-1 flex-col p-6">
+                        <h3 className="mb-2 text-xl font-bold text-[#1a1f2e] group-hover:text-[#e8a317] transition">{s.title}</h3>
+                        <p className="mb-4 flex-1 text-sm leading-relaxed text-[#5a6478]">{s.short}</p>
+                        <span className="inline-flex items-center gap-2 text-sm font-semibold text-[#1a1f2e] transition group-hover:gap-3 group-hover:text-[#e8a317]">Explore <span aria-hidden>→</span></span>
+                      </div>
+                    </article>
+                  </Link>
+                </StaggerItem>
+              );
+            })}
           </Stagger>
           <div className="mt-10 text-center">
             <Link href="/services" className="inline-flex rounded-full border-2 border-[#e5e8ef] px-6 py-3 text-sm font-semibold text-[#1a1f2e] transition hover:border-[#1a1f2e]">View all services</Link>
@@ -130,7 +129,7 @@ export default function HomePage() {
           <div className="mb-12 text-center">
             <Reveal>
               <p className="mb-3 text-sm font-semibold uppercase tracking-wider text-[#e8a317]">Why Helum</p>
-              <h2 className="text-3xl font-extrabold tracking-tight text-[#1a1f2e] sm:text-4xl">Built around real problems</h2>
+              <h2 className="text-3xl font-extrabold tracking-tight text-[#1a1f2e] sm:text-4xl">Built for African energy needs</h2>
             </Reveal>
           </div>
           <Stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -157,7 +156,7 @@ export default function HomePage() {
               <h2 className="text-3xl font-extrabold tracking-tight text-[#1a1f2e] sm:text-4xl">What drives us</h2>
             </Reveal>
           </div>
-          <Stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <Stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {values.map((v) => (
               <StaggerItem key={v.num}>
                 <article className="rounded-2xl border border-[#e5e8ef] bg-white p-6 transition hover:border-[#e8a317]">
@@ -179,7 +178,8 @@ export default function HomePage() {
         <div className="relative z-10 mx-auto max-w-[720px] px-5 text-center sm:px-6">
           <Reveal>
             <h2 className="mb-6 text-3xl font-extrabold leading-tight sm:text-5xl">{investment.ambitionTitle}</h2>
-            <p className="mb-10 text-lg text-white/75">{investment.ambition}</p>
+            <p className="mb-4 text-lg text-white/75">{promise.statement}</p>
+            <p className="mb-10 text-base text-white/60">{promise.beyond}</p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link href="/opportunity" className="rounded-full bg-[#e8a317] px-7 py-3.5 text-sm font-semibold text-[#0b1220] transition hover:bg-[#d4920f]">Explore the opportunity</Link>
               <Link href="/contact" className="rounded-full border-2 border-white/40 px-7 py-3.5 text-sm font-semibold text-white transition hover:border-white">Talk to Helum</Link>
