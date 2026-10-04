@@ -15,24 +15,24 @@ export default function ProcessPage() {
     <PageTransition>
       <PageHero
         eyebrow="How We Work"
-        title="From Challenge to Solution"
-        subtitle="We begin with the customer's challenge and work through a structured process to deliver practical, reliable and scalable solutions."
+        title="A Complete Customer Journey"
+        subtitle="Helum's approach is built around a complete solution—from understanding requirements through design, installation, monitoring and ongoing support."
         image={images.process}
       />
       <section className="bg-white py-20 sm:py-28">
         <div className="mx-auto max-w-[1000px] px-5 sm:px-6">
-          <div className="mb-10 hidden md:block">
-            <div className="relative mb-10 flex justify-between gap-2">
-              <div className="absolute left-[8%] right-[8%] top-[22px] h-0.5 bg-[#e5e8ef]" />
+          <div className="mb-10 hidden lg:block">
+            <div className="relative mb-10 flex justify-between gap-1">
+              <div className="absolute left-[5%] right-[5%] top-[22px] h-0.5 bg-[#e5e8ef]" />
               {processSteps.map((step, i) => (
                 <button
                   key={step.num}
                   type="button"
                   onClick={() => setActive(i)}
-                  className="relative z-10 flex flex-1 flex-col items-center gap-3"
+                  className="relative z-10 flex flex-1 flex-col items-center gap-2"
                 >
                   <span
-                    className={`flex h-11 w-11 items-center justify-center rounded-full border-2 text-sm font-bold transition ${
+                    className={`flex h-11 w-11 items-center justify-center rounded-full border-2 text-xs font-bold transition ${
                       active === i
                         ? "border-[#e8a317] bg-[#e8a317] text-[#0b1220]"
                         : "border-[#e5e8ef] bg-white text-[#5a6478]"
@@ -40,11 +40,7 @@ export default function ProcessPage() {
                   >
                     {step.num}
                   </span>
-                  <span
-                    className={`text-sm font-semibold ${
-                      active === i ? "text-[#1a1f2e]" : "text-[#5a6478]"
-                    }`}
-                  >
+                  <span className={`text-xs font-semibold ${active === i ? "text-[#1a1f2e]" : "text-[#5a6478]"}`}>
                     {step.title}
                   </span>
                 </button>
@@ -59,20 +55,15 @@ export default function ProcessPage() {
                 transition={{ duration: 0.35 }}
                 className="rounded-2xl border border-[#e5e8ef] bg-[#f7f8fa] px-8 py-10"
               >
-                <h2 className="mb-4 text-2xl font-bold text-[#1a1f2e]">
-                  {processSteps[active].title}
-                </h2>
+                <h2 className="mb-4 text-2xl font-bold text-[#1a1f2e]">{processSteps[active].title}</h2>
                 <p className="max-w-xl text-lg text-[#5a6478]">{processSteps[active].body}</p>
               </motion.div>
             </AnimatePresence>
           </div>
 
-          <div className="flex flex-col gap-4 md:hidden">
+          <div className="flex flex-col gap-4 lg:hidden">
             {processSteps.map((step) => (
-              <article
-                key={step.num}
-                className="rounded-2xl border border-[#e5e8ef] bg-[#f7f8fa] p-6"
-              >
+              <article key={step.num} className="rounded-2xl border border-[#e5e8ef] bg-[#f7f8fa] p-6">
                 <span className="mb-2 block text-xs font-bold text-[#e8a317]">{step.num}</span>
                 <h2 className="mb-2 text-lg font-bold text-[#1a1f2e]">{step.title}</h2>
                 <p className="text-sm text-[#5a6478]">{step.body}</p>
@@ -81,10 +72,7 @@ export default function ProcessPage() {
           </div>
 
           <Reveal className="mt-12 text-center">
-            <Link
-              href="/contact"
-              className="inline-flex rounded-full bg-[#e8a317] px-7 py-3.5 text-sm font-semibold text-[#0b1220]"
-            >
+            <Link href="/contact" className="inline-flex rounded-full bg-[#e8a317] px-7 py-3.5 text-sm font-semibold text-[#0b1220]">
               Start a conversation
             </Link>
           </Reveal>

@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import { PageTransition, Stagger, StaggerItem, Reveal } from "@/components/Motion";
-import { whyHelum } from "@/lib/content";
+import { whyHelum, promise } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Why Helum",
   description:
-    "African market understanding, technology with commercial purpose, local insight and global technology—why partners choose Helum.",
+    "Technology, local market understanding, engineering, distribution, affordability, service and scalability—why partners choose Helum.",
 };
 
 export default function WhyHelumPage() {
@@ -16,7 +16,7 @@ export default function WhyHelumPage() {
       <PageHero
         eyebrow="Differentiation"
         title="Why Helum"
-        subtitle="Technology only creates value when it solves a real problem. Here is how we work."
+        subtitle="We deliver energy solutions designed to keep people, businesses and communities moving forward."
         dark
       />
       <section className="bg-white py-20 sm:py-28">
@@ -34,11 +34,21 @@ export default function WhyHelumPage() {
               </StaggerItem>
             ))}
           </Stagger>
+
+          <Reveal className="mt-16 rounded-2xl bg-[#0b1220] p-8 text-white sm:p-12">
+            <p className="mb-4 text-sm font-semibold uppercase tracking-wider text-[#e8a317]">Our Promise</p>
+            <p className="mb-6 text-lg leading-relaxed">{promise.intro}</p>
+            <ul className="mb-6 space-y-2 text-white/80">
+              {promise.points.map((p) => (
+                <li key={p}>{p}</li>
+              ))}
+            </ul>
+            <p className="mb-4 text-white/70">{promise.beyond}</p>
+            <p className="text-xl font-semibold">{promise.statement}</p>
+          </Reveal>
+
           <Reveal className="mt-12 text-center">
-            <Link
-              href="/contact"
-              className="inline-flex rounded-full bg-[#e8a317] px-7 py-3.5 text-sm font-semibold text-[#0b1220]"
-            >
+            <Link href="/contact" className="inline-flex rounded-full bg-[#e8a317] px-7 py-3.5 text-sm font-semibold text-[#0b1220]">
               Partner with Helum
             </Link>
           </Reveal>

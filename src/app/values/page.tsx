@@ -5,7 +5,8 @@ import { values } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Our Core Values",
-  description: "Innovation, Integrity, Customer Value, Partnership, Excellence and Impact drive Helum Limited.",
+  description:
+    "Integrity, Customer Centricity, Reliability, Innovation, Technical Excellence, Partnership, Sustainability and Accessibility drive Helum Limited.",
 };
 
 export default function ValuesPage() {
@@ -23,9 +24,7 @@ export default function ValuesPage() {
             {values.map((v) => (
               <StaggerItem key={v.num}>
                 <article className="h-full rounded-2xl border border-[#e5e8ef] bg-[#f7f8fa] p-8 transition hover:border-[#e8a317] hover:shadow-md">
-                  <span className="mb-4 block text-sm font-bold tracking-wider text-[#e8a317]">
-                    {v.num}
-                  </span>
+                  <span className="mb-4 block text-sm font-bold tracking-wider text-[#e8a317]">{v.num}</span>
                   <h2 className="mb-3 text-2xl font-bold text-[#1a1f2e]">{v.title}</h2>
                   <p className="text-[#5a6478] leading-relaxed">{v.body}</p>
                 </article>
